@@ -1,27 +1,28 @@
 import { getAuth, signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChanged,signInWithEmailAndPassword , createUserWithEmailAndPassword } from "firebase/auth";
 import { useEffect, useState } from "react";
+import { useHistory } from "react-router";
 import initializeAuthentication from "../Routes/Users/Firebase/firebase.init";
 
 
 initializeAuthentication();
 
 const useFirebase = () => {
+    
+    
+
     const [user, setUser] = useState({});
     const [email,setEmail] = useState('');
     const [password,setPassword] = useState('');
-    const [name,setName] = useState('');
+    const [displayName,setDisplayName] = useState('');
+    const [isLoading,setIsLoading] = useState(true);
 
     const auth = getAuth();
 
     const sigInUsingGoogle = () => {
 
         const googleprovider = new GoogleAuthProvider();
-        signInWithPopup(auth, googleprovider)
-            .then(result => {
-                setUser(result.user);
-                console.log(result.user);
-                
-            });
+        return signInWithPopup(auth, googleprovider)
+            
     }
 
     useEffect(() => {
@@ -46,7 +47,7 @@ const useFirebase = () => {
     }
 
     const handleNameChange = e =>{
-        setName(e.target.value);
+        setDisplayName(e.target.value);
     }
     const handleEmailChange = e =>{
         setEmail(e.target.value);
@@ -55,22 +56,15 @@ const useFirebase = () => {
         setPassword(e.target.value);
     }
 
-    const handleRegistration = e =>{
+    const handleRegistration = () =>{
         
-        createUserWithEmailAndPassword(auth,email,password,name)
-        .then(result =>{
-            const user = result.user;
-        })
-        e.preventDefault();
+        return createUserWithEmailAndPassword(auth,email,password,displayName)
+        
     }
 
-    const handleSignIn = e=>{
-        signInWithEmailAndPassword(auth, email, password)
-        .then(result =>{
-            const user = result.user;
-        })
-        e.preventDefault();
-        
+    const handleSignIn = ()=>{
+        return signInWithEmailAndPassword(auth, email, password)
+          
     }
 
     return {
@@ -82,6 +76,9 @@ const useFirebase = () => {
         handlePasswordChange,
         handleRegistration,
         handleSignIn,
+        setIsLoading,
+        isLoading,
+        
 
     }
 }

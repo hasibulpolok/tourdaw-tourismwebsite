@@ -12,7 +12,7 @@ const Places = () => {
             .then(data => setPlaces(data))
     }, [])
     return (
-        <div> <br /> <br />
+        <div className="my-5"> <br /> <br />
             <h2 className="display-3 fw-bold text-center my-3">Visit Our Places</h2>
             <hr className="w-25 fw-bold border border-3 border-primary rounded  mx-auto" />
           

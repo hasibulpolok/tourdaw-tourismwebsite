@@ -9,7 +9,7 @@ const Place = ({ place }) => {
 
     const handledetails = (detailsid) => {
         const uri = `/detailsplace/${detailsid}`;
-        console.log(uri);
+        // console.log(uri);
         history.push(uri)
     }
     return (

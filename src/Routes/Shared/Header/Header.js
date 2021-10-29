@@ -1,3 +1,4 @@
+import Button from '@restart/ui/esm/Button';
 import React from 'react';
 import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
@@ -35,7 +36,7 @@ const Header = () => {
                             
                             {user.email && <p className=" text-white"><img style={{height:'50px',width:"50px",marginLeft:"10px", borderRadius:"50%"}} src={user?.photoURL} alt="ProfilePhoto" /></p>}
                             <span>{user.email && <Nav.Link className="fs-4 ms-2 me-2" as={Link} to="/profile">Profile</Nav.Link>}</span>
-                            <span>{user.email? <Nav.Link  onClick={logOut} className="fs-4 ms-2 me-2" as={Link} to="/logout">Logout</Nav.Link>:<Nav.Link as={Link} to="/login">Login</Nav.Link>}</span>
+                            <span>{user.email? <Button  onClick={logOut} className=" btn btn-primary rounded fs-5 ms-2  text-white">Logout</Button>:<Button className="btn btn-primary rounded fs-5 ms-2  text-white"> <Link className="text-decoration-none text-white" to="/login">Login</Link></Button>}</span>
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
