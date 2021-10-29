@@ -9,6 +9,7 @@ import Login from './Routes/Users/Login/Login';
 import Register from './Routes/Users/Register/Register';
 import Places from './Routes/Landing Page/Places/Places';
 import AuthProvider from './context/AuthProvider';
+import PrivateRoute from './Routes/Users/PrivateRoute/PrivateRoute';
 
 
 function App() {
@@ -33,9 +34,9 @@ function App() {
             <Route path="/places">
               <Places></Places>
             </Route>
-            <Route exact path="/detailsplace/:id">
+            <PrivateRoute exact path="/detailsplace/:id">
               <PlaceDetails></PlaceDetails>
-            </Route>
+            </PrivateRoute>
           </Switch>
           <Footer></Footer>
         </Router>

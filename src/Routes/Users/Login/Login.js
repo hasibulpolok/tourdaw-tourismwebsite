@@ -13,11 +13,11 @@ const Login = () => {
 
     const google = <FontAwesomeIcon className="fs-5 text-white" icon={faGoogle} />;
     return (
-        <div className="my-5">
-            <br />
+        <div className="my-5 p-3">
+            
 
 
-            <h2 className="text-center m-2"> Please Login</h2>
+            <h2 className="text-center"> Please Login</h2>
             <br />
             <Container className="mt-2">
                 <center><Form onSubmit={handleSignIn}>

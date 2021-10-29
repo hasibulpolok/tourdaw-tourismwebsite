@@ -5,6 +5,7 @@ import useAuth from '../../../context/useAuth';
 const PrivateRoute = ({ children, ...rest }) => {
     const { user } = useAuth();
     return (
+        <div>
         <Route
             {...rest}
             render={({ location }) => user.email ? children : <Redirect
@@ -19,6 +20,7 @@ const PrivateRoute = ({ children, ...rest }) => {
 
         >
         </Route>
+        </div>
     );
 };
 
