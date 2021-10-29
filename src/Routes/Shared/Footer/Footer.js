@@ -15,7 +15,7 @@ const Footer = () => {
                     </div>
                 </Col>
                 <Col lg={3} md={6} sm={12}>
-                    <div className="useful-links text-center text-white">
+                    <div className="useful-links text-center text-whit">
 
 
                         <ul className="fs-6 text-start ms-5 text-white">
