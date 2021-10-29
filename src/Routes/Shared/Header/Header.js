@@ -16,31 +16,26 @@ const Header = () => {
                     </Navbar.Brand>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
-                        <Nav className="me-auto">
+                        <Nav className="me-auto fs-5">
                             <Nav.Link as={Link} to="/home">Home</Nav.Link>
                             <Nav.Link as={Link} to="/places">Places</Nav.Link>
                             <Nav.Link as={Link} to="/booking">Booking</Nav.Link>
-                            <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
-                                <NavDropdown.Item as={Link} to="#action/3.1">Action</NavDropdown.Item>
-                                <NavDropdown.Item as={Link} to="#action/3.2">Another action</NavDropdown.Item>
-                                <NavDropdown.Item as={Link} to="#action/3.3">Something</NavDropdown.Item>
+                            {user.email && <span><NavDropdown className=" ms-5 fs-5" title="Manage Orders" id="collasible-nav-dropdown">
+                                <NavDropdown.Item as={Link} to="#action/3.1">My Orders</NavDropdown.Item>
+                                <NavDropdown.Item as={Link} to="#action/3.2">Manage All Orders</NavDropdown.Item>
+                                <NavDropdown.Item as={Link} to="#action/3.3">Add a new Service</NavDropdown.Item>
                                 <NavDropdown.Divider />
-                                <NavDropdown.Item as={Link} to="#action/3.4">Separated link</NavDropdown.Item>
-                            </NavDropdown>
+                            </NavDropdown></span>}
                         </Nav>
                         <Nav>
-
+                            
                             <Navbar.Text>
-                                {user.email && <p className=" text-white">{user?.displayName}</p>}
-
-
-
+                                {user.email && <p className=" text-white fs-5">{user?.displayName}</p>}
                             </Navbar.Text>
+                            
                             {user.email && <p className=" text-white"><img style={{height:'50px',width:"50px",marginLeft:"10px", borderRadius:"50%"}} src={user?.photoURL} alt="ProfilePhoto" /></p>}
-                            <Nav.Link as={Link} to="/login">Login</Nav.Link>
-                            <Nav.Link as={Link} to="/register">
-                                Register
-                            </Nav.Link>
+                            <span>{user.email && <Nav.Link className="fs-4 ms-2 me-2" as={Link} to="/profile">Profile</Nav.Link>}</span>
+                            <span>{user.email? <Nav.Link  onClick={logOut} className="fs-4 ms-2 me-2" as={Link} to="/logout">Logout</Nav.Link>:<Nav.Link as={Link} to="/login">Login</Nav.Link>}</span>
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
