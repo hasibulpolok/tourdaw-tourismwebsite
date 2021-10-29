@@ -1,0 +1,6 @@
+.place{
+    background-image: url(../../../images/img-2.jpg);
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-attachment: fixed;
+}
