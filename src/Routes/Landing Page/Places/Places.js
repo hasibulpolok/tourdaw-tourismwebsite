@@ -3,18 +3,18 @@ import React, { useEffect, useState } from 'react';
 import Place from '../Place/Place';
 
 
-const Places = () => {
+const Places = ({children}) => {
     const [places, setPlaces] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/services')
+        fetch('https://tourdaw-server.herokuapp.com/services')
             .then(res => res.json())
             .then(data => setPlaces(data))
     }, [])
     return (
         <div className="my-5"> <br /> <br />
-            <h2 className="display-3 fw-bold text-center my-3">Visit Our Places</h2>
-            <hr className="w-25 fw-bold border border-3 border-primary rounded  mx-auto" />
+            <h2 className="display-3 fw-bold text-center text-primary my-3">{children}</h2>
+            
 
             <div className="row my-2 g-2">
                 {

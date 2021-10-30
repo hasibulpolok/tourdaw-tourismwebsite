@@ -12,6 +12,9 @@ import AuthProvider from './context/AuthProvider';
 import PrivateRoute from './Routes/Users/PrivateRoute/PrivateRoute';
 import ManageAll from './Routes/Manage/ManageAll/ManageAll';
 import AddServices from './Routes/AddServices/AddServices';
+import ContactUs from './Routes/ContactUs/ContacUs'
+import NotFound from './Routes/NotFound/NotFound';
+import About from './Routes/About/About';
 
 
 function App() {
@@ -36,6 +39,12 @@ function App() {
             <Route path="/places">
               <Places></Places>
             </Route>
+            <Route path="/about">
+              <About></About>
+            </Route>
+            <Route path="/contact">
+              <ContactUs></ContactUs>
+            </Route>
             <Route path="/manageallorders">
               <ManageAll></ManageAll>
             </Route>
@@ -45,6 +54,9 @@ function App() {
             <PrivateRoute exact path="/detailsplace/:id">
               <PlaceDetails></PlaceDetails>
             </PrivateRoute>
+            <Route  path="*">
+              <NotFound></NotFound>
+            </Route>
           </Switch>
           <Footer></Footer>
         </Router>

@@ -20,7 +20,8 @@ const Header = () => {
                         <Nav className="me-auto fs-5">
                             <Nav.Link as={Link} to="/home">Home</Nav.Link>
                             <Nav.Link as={Link} to="/places">Places</Nav.Link>
-                            <Nav.Link as={Link} to="/booking">Booking</Nav.Link>
+                            <Nav.Link as={Link} to="/about">About</Nav.Link>
+                            <Nav.Link as={Link} to="/contact">Contact Us</Nav.Link>
                             {user.email && <span><NavDropdown className=" ms-5 fs-5" title="Manage Orders" id="collasible-nav-dropdown">
                                 <NavDropdown.Item as={Link} to="#action/3.1">My Orders</NavDropdown.Item>
                                 <NavDropdown.Item as={Link} to="/manageallorders">Manage All Orders</NavDropdown.Item>
@@ -31,12 +32,12 @@ const Header = () => {
                         <Nav>
 
                             <Navbar.Text>
-                                {user.email && <p className=" text-white fs-5">{user?.displayName}</p>}
+                                {user.email && <p className=" text-white fs-5 my-1">{user?.displayName}</p>}
                             </Navbar.Text>
 
                             {user.email && <p className=" text-white"><img style={{ height: '50px', width: "50px", marginLeft: "10px", borderRadius: "50%" }} src={user?.photoURL} alt="ProfilePhoto" /></p>}
                             <span>{user.email && <Nav.Link className="fs-4 ms-2 me-2" as={Link} to="/profile">Profile</Nav.Link>}</span>
-                            <span>{user.email ? <Button onClick={logOut} className=" btn btn-primary rounded fs-5 ms-2  text-white">Logout</Button> : <Button className="btn btn-primary rounded fs-5 ms-2  text-white"> <Link className="text-decoration-none text-white" to="/login">Login</Link></Button>}</span>
+                            <span>{user.email ? <Button onClick={logOut} className=" btn btn-primary rounded my-2 ms-2  text-white">Logout</Button> : <Button className="btn btn-primary rounded fs-5 ms-2  text-white"> <Link className="text-decoration-none text-white" to="/login">Login</Link></Button>}</span>
                         </Nav>
                     </Navbar.Collapse>
                 </Container>

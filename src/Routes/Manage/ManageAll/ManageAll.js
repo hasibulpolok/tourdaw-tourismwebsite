@@ -8,7 +8,7 @@ const ManageAll = () => {
     const [allorders, setAllorders] = useState([]);
 
     useEffect(() =>
-        fetch('http://localhost:5000/services')
+        fetch('https://tourdaw-server.herokuapp.com/services')
             .then(res => res.json())
             .then(data => setAllorders(data))
         , [])

@@ -14,7 +14,7 @@ const ManageAllOrder = ({ allorder }) => {
 
     // Delete a place
     const handledeletplace = (id) => {
-        const uri = `http://localhost:5000/services/${id}`;
+        const uri = `https://floating-dawn-88339.herokuapp.com/service/${id}`;
         fetch(uri, {
             method: 'DELETE'
         })

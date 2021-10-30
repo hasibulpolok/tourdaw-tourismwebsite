@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
-import { Card, Container } from 'react-bootstrap';
-import Button from '@restart/ui/esm/Button';
+import { Card, Container,Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 const PlaceDetails = () => {
 
@@ -12,7 +12,7 @@ const PlaceDetails = () => {
     const {title,desc,img,price} = singledetails;
 
     useEffect(() => {
-        fetch('http://localhost:5000/services')
+        fetch('https://tourdaw-server.herokuapp.com/services')
             .then(res => res.json())
             .then(data => setDetails(data))
     }, []);
@@ -40,6 +40,7 @@ const PlaceDetails = () => {
                         </Card.Text>
                     </Card.Body>
                     <Button className="btn btn-primary rounded">Purchase Service</Button>
+                    <Button className=" mt-2 btn btn-primary rounded"><Link className="text-white text-decoration-none" to="/places">Back To Places</Link></Button>
                 </Card>
             </Container>
         </div>
