@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 import './Place.css';
 
 const Place = ({ place }) => {
-    const { id, title, thumbnailUrl } = place;
+    const { _id, title, img,desc } = place;
     const history = useHistory();
 
     const handledetails = (detailsid) => {
@@ -15,18 +15,17 @@ const Place = ({ place }) => {
     return (
         <div className="col-md-3 place py-5">
             <Container>
-                <Card style={{ width: '20rem' }}>
-                    <Card.Img variant="top" src={thumbnailUrl} />
+                <Card style={{ width: '18rem' }}>
+                    <Card.Img style={{width:"100%",height:"200px"}} variant="top" src={img} />
                     <Card.Body>
                         <Card.Title>{title.slice(0,20)}</Card.Title>
                         <Card.Text>
-                            Some quick example text to build on the card title and make up the bulk of
-                            the card's content.
+                            {desc.slice(0,150)}
                         </Card.Text>
                         
                     </Card.Body>
                     <Button onClick={() =>
-                            handledetails(id)
+                            handledetails(_id)
                         } className="my-1 broder border-primary" variant="primary">Details</Button>
                         <Button className="broder border-primary" variant="primary">Purchase</Button>
                 </Card>

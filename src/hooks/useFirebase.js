@@ -1,4 +1,4 @@
-import { getAuth, signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChanged,signInWithEmailAndPassword , createUserWithEmailAndPassword } from "firebase/auth";
+import { getAuth, signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChanged, signInWithEmailAndPassword, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router";
 import initializeAuthentication from "../Routes/Users/Firebase/firebase.init";
@@ -7,14 +7,15 @@ import initializeAuthentication from "../Routes/Users/Firebase/firebase.init";
 initializeAuthentication();
 
 const useFirebase = () => {
-    
-    
+
+
 
     const [user, setUser] = useState({});
-    const [email,setEmail] = useState('');
-    const [password,setPassword] = useState('');
-    const [displayName,setDisplayName] = useState('');
-    const [isLoading,setIsLoading] = useState(true);
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [name, setName] = useState('');
+    const [photoURL, setPhotoURL] = useState('');
+    const [isLoading, setIsLoading] = useState(true);
 
     const auth = getAuth();
 
@@ -22,7 +23,7 @@ const useFirebase = () => {
 
         const googleprovider = new GoogleAuthProvider();
         return signInWithPopup(auth, googleprovider)
-            
+
     }
 
     useEffect(() => {
@@ -33,6 +34,7 @@ const useFirebase = () => {
             else {
                 setUser({});
             }
+            setIsLoading(false);
         });
         return () => unsubscribed;
     }, [])
@@ -46,25 +48,39 @@ const useFirebase = () => {
             });
     }
 
-    const handleNameChange = e =>{
-        setDisplayName(e.target.value);
+    const handleNameChange = e => {
+        setName(e.target.value);
     }
-    const handleEmailChange = e =>{
+    const handleEmailChange = e => {
         setEmail(e.target.value);
     }
-    const handlePasswordChange = e =>{
+    const handlePasswordChange = e => {
         setPassword(e.target.value);
     }
 
-    const handleRegistration = () =>{
-        
-        return createUserWithEmailAndPassword(auth,email,password,displayName)
-        
+    const handleRegistration = (email, password) => {
+
+        return createUserWithEmailAndPassword(auth, email, password, name)
+
     }
 
-    const handleSignIn = ()=>{
+    const handleSignIn = () => {
         return signInWithEmailAndPassword(auth, email, password)
-          
+
+    }
+
+    const updateName = (name, photoURL) => {
+
+        const auth = getAuth();
+        updateProfile(auth.currentUser, {
+            displayName: name, photoURL: "https://www.cornwallbusinessawards.co.uk/wp-content/uploads/2017/11/dummy450x450-300x300.jpg"
+        }).then(() => {
+            // Profile updated!
+            // ...
+        }).catch((error) => {
+            // An error occurred
+            // ...
+        });
     }
 
     return {
@@ -78,7 +94,11 @@ const useFirebase = () => {
         handleSignIn,
         setIsLoading,
         isLoading,
-        
+        email,
+        password,
+        name,
+        updateName,
+        photoURL,
 
     }
 }

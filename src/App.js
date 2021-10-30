@@ -10,6 +10,8 @@ import Register from './Routes/Users/Register/Register';
 import Places from './Routes/Landing Page/Places/Places';
 import AuthProvider from './context/AuthProvider';
 import PrivateRoute from './Routes/Users/PrivateRoute/PrivateRoute';
+import ManageAll from './Routes/Manage/ManageAll/ManageAll';
+import AddServices from './Routes/AddServices/AddServices';
 
 
 function App() {
@@ -33,6 +35,12 @@ function App() {
             </Route>
             <Route path="/places">
               <Places></Places>
+            </Route>
+            <Route path="/manageallorders">
+              <ManageAll></ManageAll>
+            </Route>
+            <Route path="/addservice">
+              <AddServices></AddServices>
             </Route>
             <PrivateRoute exact path="/detailsplace/:id">
               <PlaceDetails></PlaceDetails>

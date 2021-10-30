@@ -17,7 +17,7 @@ const Login = () => {
 
     const gtosignin = () => {
         sigInUsingGoogle().then(result => {
-           
+            setIsLoading(true);
             history.push(uri)
         })
         .finally(() => {
@@ -27,6 +27,7 @@ const Login = () => {
 
     const signinwithmail = (e) => {
         handleSignIn().then(result => {
+            setIsLoading(true);
             const user = result.user;
             history.push(uri);
 

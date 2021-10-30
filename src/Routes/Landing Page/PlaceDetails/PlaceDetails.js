@@ -9,16 +9,17 @@ const PlaceDetails = () => {
 
     const [details, setDetails] = useState([]);
     const [singledetails, setSingledetails] = useState({});
+    const {title,desc,img,price} = singledetails;
 
     useEffect(() => {
-        fetch('https://jsonplaceholder.typicode.com/photos')
+        fetch('http://localhost:5000/services')
             .then(res => res.json())
             .then(data => setDetails(data))
     }, []);
 
     useEffect(() => {
         if (details.length > 0) {
-            const matched = details.find(detail => detail.id == id)
+            const matched = details.find(detail => detail._id == id)
             setSingledetails(matched);
         }
     }, [details])
@@ -30,12 +31,12 @@ const PlaceDetails = () => {
             <h1 className="text-center display-2 fw-bold text-uppercase text-primary ">Know more about this place</h1>
             <Container>
                 <Card className="mx-auto mt-5" style={{ width: '60%', marginBottom: "5px" }}>
-                    <Card.Img style={{ height: "250px" }} variant="top" src={singledetails.thumbnailUrl} />
+                    <Card.Img style={{ height: "250px" }} variant="top" src={img} />
                     <Card.Body>
-                        <Card.Title>{singledetails.title}</Card.Title>
-                        <p><i>Price:100 $</i></p>
+                        <Card.Title>{title}</Card.Title>
+                        <p><i><strong>Price: {price} TK</strong></i></p>
                         <Card.Text>
-                            {singledetails.title}
+                            <p>{desc}</p>
                         </Card.Text>
                     </Card.Body>
                     <Button className="btn btn-primary rounded">Purchase Service</Button>

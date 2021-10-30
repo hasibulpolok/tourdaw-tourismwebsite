@@ -10,28 +10,30 @@ const Register = () => {
 
     const location = useLocation();
 
-    const { sigInUsingGoogle, handleEmailChange, handlePasswordChange, handleRegistration, handleNameChange, setIsLoading } = useAuth();
+    const { photoURL,updateName, email, password, name, sigInUsingGoogle, handleEmailChange, handlePasswordChange, handleRegistration, handleNameChange, setIsLoading } = useAuth();
     const uri = location.state?.from || '/home';
     const history = useHistory();
 
     const gtosignin = () => {
         sigInUsingGoogle().then(result => {
-
+            setIsLoading(true);
             history.push(uri)
         })
-        .finally(() => {
-            setIsLoading(false);
-        })
+            .finally(() => {
+                setIsLoading(false);
+            })
     }
 
     const registerwithmail = (e) => {
-        handleRegistration().then(result => {
+        handleRegistration(email, password,name,photoURL).then(result => {
+            setIsLoading(true);
+            updateName(name);
             const user = result.user;
             history.push(uri);
         })
             .finally(() => {
-            setIsLoading(false);
-        })
+                setIsLoading(false);
+            })
         e.preventDefault();
     }
 

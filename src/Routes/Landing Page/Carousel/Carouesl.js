@@ -1,5 +1,5 @@
 import React from 'react';
-import { Carousel } from 'react-bootstrap';
+import { Carousel} from 'react-bootstrap';
 import img1 from '../../../images/img-1.jpg';
 import img2 from '../../../images/img-2.jpg';
 import img3 from '../../../images/img-3.jpg';
@@ -7,6 +7,7 @@ import img3 from '../../../images/img-3.jpg';
 const Carouesl = () => {
     return (
         <div>
+            
             <Carousel variant="dark">
                 <Carousel.Item>
                     <img
@@ -42,6 +43,7 @@ const Carouesl = () => {
                     </Carousel.Caption>
                 </Carousel.Item>
             </Carousel>
+           
         </div>
     );
 };
