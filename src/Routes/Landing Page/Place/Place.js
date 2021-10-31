@@ -27,7 +27,7 @@ const Place = ({ place }) => {
                     <Button onClick={() =>
                             handledetails(_id)
                         } className=" broder border-primary" variant="primary">Details</Button>
-                        {/* <Button className="broder border-primary" variant="primary">Purchase</Button> */}
+                        
                 </Card>
 
             </Container>

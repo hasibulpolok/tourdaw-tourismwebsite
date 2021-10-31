@@ -15,6 +15,8 @@ import AddServices from './Routes/AddServices/AddServices';
 import ContactUs from './Routes/ContactUs/ContacUs'
 import NotFound from './Routes/NotFound/NotFound';
 import About from './Routes/About/About';
+import Booking from './Routes/AddServices/Booking/Booking';
+import ApproveBooking from './Routes/ApproveBooking/ApproveBooking';
 
 
 function App() {
@@ -44,6 +46,12 @@ function App() {
             </Route>
             <Route path="/contact">
               <ContactUs></ContactUs>
+            </Route>
+            <Route path="/book">
+              <Booking></Booking>
+            </Route>
+            <Route path="/update/:id">
+              <ApproveBooking></ApproveBooking>
             </Route>
             <Route path="/manageallorders">
               <ManageAll></ManageAll>
