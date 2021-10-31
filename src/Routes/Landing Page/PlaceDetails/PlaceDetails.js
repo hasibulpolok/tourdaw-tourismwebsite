@@ -1,15 +1,21 @@
 import { useParams } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
-import { Card, Container,Button } from 'react-bootstrap';
+import { Card, Container, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import useFirebase from '../../../hooks/useFirebase';
+// import useAuth from '../../../context/useAuth';
+
+
+
 
 const PlaceDetails = () => {
 
     const { id } = useParams();
+    const { user } = useFirebase()
 
     const [details, setDetails] = useState([]);
     const [singledetails, setSingledetails] = useState({});
-    const {title,desc,img,price} = singledetails;
+    const { title, desc, img, price } = singledetails;
 
     useEffect(() => {
         fetch('https://tourdaw-server.herokuapp.com/services')
@@ -22,7 +28,35 @@ const PlaceDetails = () => {
             const matched = details.find(detail => detail._id == id)
             setSingledetails(matched);
         }
-    }, [details])
+    }, [details]);
+
+
+    const handlebook = () => {
+
+        const bookdetails = {
+            Title: title,
+            Price: price,
+            Image: img,
+            User: user.email,
+            Status: "Pending"
+        };
+        fetch('https://tourdaw-server.herokuapp.com/book', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(bookdetails)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.insertedId) {
+                    alert('Booked Successfully');
+                }
+            })
+
+    }
+
+
 
 
     return (
@@ -39,7 +73,7 @@ const PlaceDetails = () => {
                             <p>{desc}</p>
                         </Card.Text>
                     </Card.Body>
-                    <Button className="btn btn-primary rounded">Purchase Service</Button>
+                    <Button onClick={handlebook} className="btn btn-primary rounded">Purchase Service</Button>
                     <Button className=" mt-2 btn btn-primary rounded"><Link className="text-white text-decoration-none" to="/places">Back To Places</Link></Button>
                 </Card>
             </Container>
