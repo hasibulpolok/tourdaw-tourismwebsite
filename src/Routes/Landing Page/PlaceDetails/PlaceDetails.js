@@ -37,6 +37,7 @@ const PlaceDetails = () => {
             Title: title,
             Price: price,
             Image: img,
+            Description:desc,
             User: user.email,
             Status: "Pending"
         };
