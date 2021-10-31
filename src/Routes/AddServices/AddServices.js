@@ -39,7 +39,7 @@ const AddServices = () => {
             <br />
             <div className="mt-5">
 
-                <h3 className="text-center text-primary "> Add a New Service</h3>
+                <h3 className="text-center text-primary "> Add a New Place</h3>
                 <Container>
                     <Form onSubmit={handleAdService}>
                         <Form.Group className="mb-3 w-50 mx-auto" controlId="formGroup">

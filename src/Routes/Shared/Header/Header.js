@@ -25,7 +25,7 @@ const Header = () => {
                             {user.email && <span><NavDropdown className=" ms-5 fs-5" title="Manage Orders" id="collasible-nav-dropdown">
                                 <NavDropdown.Item as={Link} to="#action/3.1">My Orders</NavDropdown.Item>
                                 <NavDropdown.Item as={Link} to="/manageallorders">Manage All Orders</NavDropdown.Item>
-                                <NavDropdown.Item as={Link} to="/addservice">Add a new Service</NavDropdown.Item>
+                                <NavDropdown.Item as={Link} to="/addservice">Add a new Place</NavDropdown.Item>
                                 <NavDropdown.Divider />
                             </NavDropdown></span>}
                         </Nav>
